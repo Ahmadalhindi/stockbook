@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from posts.models import Stock
+from stocks.models import Stock
 
 
-class PostSerializer(serializers.ModelSerializer):
+class StockSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.ReadOnlyField(source='owner.profile.id')
