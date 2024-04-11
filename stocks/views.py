@@ -6,10 +6,24 @@ from .serializers import StockSerializer
 
 
 class StockList(APIView):
-
+    serializer_class = StockSerializer
+    
     def get(self, request):
         stocks = Stock.objects.all()
         serializer = StockSerializer(
             stocks, many=True, context={'request': request}
         )
         return Response(serializer.data)
+    
+    def post(self, request):
+        serializer = StockSerializer(
+            data=request.data, context={'request': request}
+        )
+        if serializer.is_valid():
+            serializer.save(owner=request.user)
+            return Response(
+                serializer.data, status=status.HTTP_201_CREATED
+            )
+        return Response(
+            serializer.errors, status=status.HTTP_400_BAD_REQUEST
+        )

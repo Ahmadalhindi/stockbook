@@ -31,6 +31,6 @@ class StockSerializer(serializers.ModelSerializer):
             'id', 'owner', 'is_owner', 'profile_id',
             'profile_image', 'created_at', 'updated_at',
             'title', 'symbol', 'company_name', 'sector',
-            'order', 'order_date', 'rder_price', 'quantity',
+            'order', 'order_date', 'order_price', 'quantity',
             'content', 'chart', 'image'
         ]
