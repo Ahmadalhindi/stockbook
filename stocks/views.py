@@ -7,6 +7,9 @@ from .serializers import StockSerializer
 
 class StockList(APIView):
     serializer_class = StockSerializer
+    permission_classes = [
+        permissions.IsAuthenticatedOrReadOnly
+    ]
     
     def get(self, request):
         stocks = Stock.objects.all()

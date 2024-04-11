@@ -10,7 +10,9 @@ class StockSerializer(serializers.ModelSerializer):
 
     def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
-            raise serializers.ValidationError('Image size is larger than 2MB!')
+            raise serializers.ValidationError(
+                'Image size is larger than 2MB!'
+            )
         if value.image.height > 4096:
             raise serializers.ValidationError(
                 'Image height is larger than 4096px!'
@@ -18,6 +20,21 @@ class StockSerializer(serializers.ModelSerializer):
         if value.image.width > 4096:
             raise serializers.ValidationError(
                 'Image width is larger than 4096px!'
+            )
+        return value
+
+    def validate_chart(self, value):
+        if value.size > 2 * 1024 * 1024:
+            raise serializers.ValidationError(
+                'Chart size is larger than 2MB!'
+            )
+        if value.chart.height > 4096:
+            raise serializers.ValidationError(
+                'Chart height is larger than 4096px!'
+            )
+        if value.chart.width > 4096:
+            raise serializers.ValidationError(
+                'Chart width is larger than 4096px!'
             )
         return value
 
