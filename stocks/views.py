@@ -51,3 +51,15 @@ class StockDetail(APIView):
             stock, context={'request': request}
         )
         return Response(serializer.data)
+
+    def put(self, request, pk):
+        stock = self.get_object(pk)
+        serializer = StockSerializer(
+            stock, data=request.data, context={'request': request}
+        )
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(
+            serializer.errors, status=status.HTTP_400_BAD_REQUEST
+        )
