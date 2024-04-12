@@ -33,9 +33,9 @@ class Stock(models.Model):
     order = models.CharField(
         max_length=10, choices=order_choices, default='hold'
     )
-    order_date = models.DateField(blank=True)
-    order_price = models.DecimalField(max_digits=10, decimal_places=2, blank=True)
-    quantity = models.PositiveIntegerField(blank=True)
+    order_date = models.DateField(null=True, blank=True)
+    order_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
+    quantity = models.PositiveIntegerField(null=True, blank=True)
     content = models.TextField()
     chart = models.ImageField(
         upload_to='images/', blank=True
