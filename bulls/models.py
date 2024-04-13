@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from stocks.models import Stock
 
 
-class Pull(models.Model):
+class Bull(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     stock = models.ForeignKey(
         Stock, related_name='pulls', on_delete=models.CASCADE

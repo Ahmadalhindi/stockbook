@@ -1,13 +1,13 @@
 from django.db import IntegrityError
 from rest_framework import serializers
-from pulls.models import Pull
+from bulls.models import Bull
 
 
-class PullSerializer(serializers.ModelSerializer):
+class BullSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source='owner.username')
 
     class Meta:
-        model = Pull
+        model = Bull
         fields = ['id', 'created_at', 'owner', 'stock']
 
     def create(self, validated_data):
