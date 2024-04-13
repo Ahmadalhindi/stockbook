@@ -3,10 +3,10 @@ from django.contrib.auth.models import User
 from stocks.models import Stock
 
 
-class Bull(models.Model):
+class Bear(models.Model):
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     stock = models.ForeignKey(
-        Stock, related_name='bulls', on_delete=models.CASCADE
+        Stock, related_name='bears', on_delete=models.CASCADE
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
