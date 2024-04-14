@@ -24,4 +24,5 @@ urlpatterns = [
     path('', include('comments.urls')),
     path('', include('bulls.urls')),
     path('', include('bears.urls')),
+    path('', include('followers.urls')),
 ]
