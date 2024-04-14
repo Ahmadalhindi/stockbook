@@ -11,6 +11,9 @@ class StockSerializer(serializers.ModelSerializer):
     profile_image = serializers.ReadOnlyField(source='owner.profile.image.url')
     bull_id = serializers.SerializerMethodField()
     bear_id = serializers.SerializerMethodField()
+    bulls_count = serializers.ReadOnlyField()
+    bears_count = serializers.ReadOnlyField()
+    comments_count = serializers.ReadOnlyField()
 
     def validate_file(self, value, field_name):
         if value.size > 2 * 1024 * 1024:
@@ -62,4 +65,5 @@ class StockSerializer(serializers.ModelSerializer):
             'title', 'symbol', 'company_name', 'sector',
             'order', 'order_date', 'order_price', 'quantity',
             'content', 'chart', 'image', 'bull_id', 'bear_id',
+            'bulls_count', 'bears_count', 'comments_count',
         ]
