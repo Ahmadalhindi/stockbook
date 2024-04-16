@@ -35,9 +35,9 @@ class StockList(generics.ListCreateAPIView):
         'owner__profile',
     ]
     ordering_fields = [
+        'comments_count',
         'bulls_count',
         'bears_count',
-        'comments_count',
         'bulls__created_at',
         'bears__created_at',
     ]
