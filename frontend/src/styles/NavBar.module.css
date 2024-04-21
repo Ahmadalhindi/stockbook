@@ -1,14 +1,48 @@
 .NavBar {
-    background-color: #ffffff;
-    border: 1px solid #dadadf;
+  background-color: #ffffff;
+  border: 1px solid #dadadf;
 }
 
 .NavLink {
-    padding: 5px;
+  padding: 5px;
 }
-  
+
+a {
+  background: linear-gradient(
+    to right,
+    rgb(3, 52, 144) 0%,
+    rgb(0, 229, 255) 50%,
+    rgb(12, 42, 84) 50%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+a:hover {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+i {
+  background: linear-gradient(
+    to left,
+    rgb(3, 52, 144) 0%,
+    rgb(0, 229, 255) 50%,
+    rgb(43, 82, 136) 50%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.6rem;
+  padding: 7px;
+  vertical-align: middle;
+}
+
+i:hover {
+  cursor: pointer;
+}
+
 .Active i {
-    font-size: x-large;
-    border-left: solid rgb(122, 169, 201);
-    border-radius: 100%;
+  font-size: x-large;
+  border-left: solid rgb(122, 169, 201);
+  border-radius: 100%;
 }
