@@ -2,3 +2,13 @@
     background-color: #ffffff;
     border: 1px solid #dadadf;
 }
+
+.NavLink {
+    padding: 5px;
+}
+  
+.Active i {
+    font-size: x-large;
+    border-left: solid rgb(122, 169, 201);
+    border-radius: 100%;
+}
