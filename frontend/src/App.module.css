@@ -1,0 +1,33 @@
+.App {
+    font-family: "Montserrat", sans-serif;
+    background-color: #d3e7ee;
+    min-height: 100vh;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    background: linear-gradient(to right, rgb(3, 52, 144) 0%, rgb(0, 229, 255) 50%, rgb(12, 42, 84) 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+a:hover {
+    text-decoration: none;
+    font-weight: 500;
+}
+
+i {
+    background: linear-gradient(to left, rgb(3, 52, 144) 0%, rgb(0, 229, 255) 50%, rgb(43, 82, 136) 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 1.6rem;
+    padding: 7px;
+    vertical-align: middle;
+}
+
+i:hover {
+    cursor: pointer;
+}
