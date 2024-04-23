@@ -64,10 +64,11 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = [
-    os.environ.get('ALLOWED_HOST'),
-    'localhost',
+os.environ.get('ALLOWED_HOST'),
+'localhost',
+'8000-ahmadalhindi-stockbook-gm2ml0e2nil.ws-eu110.gitpod.io',
+'127.0.0.1:8000'
 ]
-
 
 # Application definition
 
@@ -115,6 +116,11 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 ROOT_URLCONF = 'stock_book.urls'
+
+CSRF_TRUSTED_ORIGINS = [
+"https://*.gitpod.io",
+"https://*.herokuapp.com"
+]
 
 TEMPLATES = [
     {
