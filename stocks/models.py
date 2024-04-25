@@ -28,18 +28,15 @@ class Stock(models.Model):
     symbol = models.CharField(max_length=10)
     company_name = models.CharField(max_length=100)
     sector = models.CharField(
-        max_length=30, choices=sector_choices, default=''
+        max_length=30, choices=sector_choices, default='', blank=True
     )
     order = models.CharField(
-        max_length=10, choices=order_choices, default='hold'
+        max_length=10, choices=order_choices, default='hold', blank=True
     )
     order_date = models.DateField(null=True, blank=True)
     order_price = models.DecimalField(max_digits=10, decimal_places=2, null=True, blank=True)
     quantity = models.PositiveIntegerField(null=True, blank=True)
     content = models.TextField()
-    chart = models.ImageField(
-        upload_to='images/', blank=True
-    )
     image = models.ImageField(
         upload_to='images/', blank=True
     )

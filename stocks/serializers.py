@@ -15,30 +15,18 @@ class StockSerializer(serializers.ModelSerializer):
     bears_count = serializers.ReadOnlyField()
     comments_count = serializers.ReadOnlyField()
 
-    def validate_file(self, value, field_name):
+    def validate_image(self, value):
         if value.size > 2 * 1024 * 1024:
+            raise serializers.ValidationError('Image size larger than 2MB!')
+        if value.image.height > 4096:
             raise serializers.ValidationError(
-                f'{field_name} size is larger than 2MB!'
+                'Image height larger than 4096px!'
             )
-        if value.height > 4096:
+        if value.image.width > 4096:
             raise serializers.ValidationError(
-                f'{field_name} height is larger than 4096px!'
-            )
-        if value.width > 4096:
-            raise serializers.ValidationError(
-                f'{field_name} width is larger than 4096px!'
+                'Image width larger than 4096px!'
             )
         return value
-
-    def validate(self, data):
-        data = super().validate(data)
-        image = data.get('image')
-        if image:
-            self.validate_file(image, 'Image')
-        chart = data.get('chart')
-        if chart:
-            self.validate_file(chart, 'Chart')
-        return data
 
     def get_is_owner(self, obj):
         request = self.context['request']
@@ -64,6 +52,6 @@ class StockSerializer(serializers.ModelSerializer):
             'profile_image', 'created_at', 'updated_at',
             'title', 'symbol', 'company_name', 'sector',
             'order', 'order_date', 'order_price', 'quantity',
-            'content', 'chart', 'image', 'bull_id', 'bear_id',
+            'content', 'image', 'bull_id', 'bear_id',
             'bulls_count', 'bears_count', 'comments_count',
         ]

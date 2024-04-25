@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -12,25 +12,42 @@ import styles from "../../styles/StockCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-import { Image } from "react-bootstrap";
+import Alert from "react-bootstrap/Alert";
+import Image from "react-bootstrap/Image";
+
+import { useHistory } from "react-router";
+import { axiosReq } from "../../api/axiosDefaults";
 
 function StockCreateForm() {
   const [errors, setErrors] = useState({});
 
   const [stockData, setStockData] = useState({
     title: "",
-    content: "",
-    symbol: "",
     company_name: "",
+    symbol: "",
     sector: "",
     order: "",
     order_date: "",
     order_price: "",
     quantity: "",
-    chart: "",
+    content: "",
     image: "",
   });
-  const { title, company_name, symbol, sector, order, order_date, order_price, quantity, image, chart, content } = stockData;
+  const {
+    title,
+    company_name,
+    symbol,
+    sector,
+    order,
+    order_date,
+    order_price,
+    quantity,
+    content,
+    image,
+  } = stockData;
+
+  const imageInput = useRef(null);
+  const history = useHistory();
 
   const handleChange = (event) => {
     setStockData({
@@ -49,13 +66,30 @@ function StockCreateForm() {
     }
   };
 
-  const handleChangeChart = (event) => {
-    if (event.target.files.length) {
-      URL.revokeObjectURL(chart);
-      setStockData({
-        ...stockData,
-        chart: URL.createObjectURL(event.target.files[0]),
-      });
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const formData = new FormData();
+
+    formData.append("title", title);
+    formData.append("company_name", company_name);
+    formData.append("symbol", symbol);
+    formData.append("sector", sector);
+    formData.append("order", order);
+    formData.append("order_date", order_date);
+    formData.append("order_price", order_price);
+    formData.append("quantity", quantity);
+    formData.append("content", content);
+    formData.append("image", imageInput.current.files[0]);
+
+    try {
+      const { data } = await axiosReq.post("/stocks/", formData);
+      history.push(`/stocks/${data.id}`);
+    } catch (err) {
+      console.log(err);
+      if (err.response?.status !== 401) {
+        setErrors(err.response?.data);
+      }
     }
   };
 
@@ -70,6 +104,11 @@ function StockCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.title?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Form.Group>
         <Form.Label>Company Name</Form.Label>
         <Form.Control
@@ -79,6 +118,11 @@ function StockCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.company_name?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Form.Group>
         <Form.Label>Symbol</Form.Label>
         <Form.Control
@@ -88,6 +132,11 @@ function StockCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.symbol?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Form.Group>
         <Form.Label>Sector</Form.Label>
         <Form.Control
@@ -97,6 +146,11 @@ function StockCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.sector?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Form.Group>
         <Form.Label>Order</Form.Label>
         <Form.Control
@@ -106,6 +160,11 @@ function StockCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.order?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Form.Group>
         <Form.Label>Order Date</Form.Label>
         <Form.Control
@@ -115,6 +174,11 @@ function StockCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.order_date?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Form.Group>
         <Form.Label>Order Price</Form.Label>
         <Form.Control
@@ -125,6 +189,11 @@ function StockCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.order_price?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Form.Group>
         <Form.Label>Quantity</Form.Label>
         <Form.Control
@@ -134,6 +203,11 @@ function StockCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.quantity?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
       <Form.Group>
         <Form.Label>Content</Form.Label>
         <Form.Control
@@ -144,10 +218,15 @@ function StockCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
+      {errors?.content?.map((message, idx) => (
+        <Alert variant="warning" key={idx}>
+          {message}
+        </Alert>
+      ))}
 
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => {}}
+        onClick={() => history.goBack()}
       >
         cancel
       </Button>
@@ -158,7 +237,7 @@ function StockCreateForm() {
   );
 
   return (
-    <Form>
+    <Form onSubmit={handleSubmit}>
       <Row>
         <Col className="py-2 p-0 p-md-2" md={7} lg={8}>
           <Container
@@ -195,47 +274,17 @@ function StockCreateForm() {
                 id="image-upload"
                 accept="image/*"
                 onChange={handleChangeImage}
+                ref={imageInput}
               />
             </Form.Group>
-          </Container>
-          <Container
-            className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
-          >
-            <Form.Group className="text-center">
-              {chart ? (
-                <>
-                  <figure>
-                    <Image className={appStyles.Image} src={chart} rounded />
-                  </figure>
-                  <div>
-                    <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
-                      htmlFor="chart-upload"
-                    >
-                      Change the chart
-                    </Form.Label>
-                  </div>
-                </>
-              ) : (
-                <Form.Label
-                  className="d-flex justify-content-center"
-                  htmlFor="chart-upload"
-                >
-                  <Asset
-                    src={Upload}
-                    message="Click or tap to upload a chart"
-                  />
-                </Form.Label>
-              )}
+            {errors?.image?.map((message, idx) => (
+              <Alert variant="warning" key={idx}>
+                {message}
+              </Alert>
+            ))}
 
-              <Form.File
-                id="chart-upload"
-                accept="image/*"
-                onChange={handleChangeChart}
-              />
-            </Form.Group>
+            <div className="d-md-none">{textFields}</div>
           </Container>
-          <div className="d-md-none">{textFields}</div>
         </Col>
         <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
           <Container className={appStyles.Content}>{textFields}</Container>
