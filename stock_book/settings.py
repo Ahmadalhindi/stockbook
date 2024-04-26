@@ -70,6 +70,19 @@ os.environ.get('ALLOWED_HOST'),
 '127.0.0.1:8000'
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    os.environ.get('CLIENT_ORIGIN')
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+"https://*.gitpod.io",
+"https://*.herokuapp.com",
+'http://localhost:8000',
+"http://127.0.0.1:8000/"
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -109,20 +122,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ALLOWED_ORIGINS = [
-    os.environ.get('CLIENT_ORIGIN')
-]
-
-CORS_ALLOW_CREDENTIALS = True
-
 ROOT_URLCONF = 'stock_book.urls'
-
-CSRF_TRUSTED_ORIGINS = [
-"https://*.gitpod.io",
-"https://*.herokuapp.com",
-'http://localhost:8000',
-"http://127.0.0.1:8000/"
-]
 
 TEMPLATES = [
     {
