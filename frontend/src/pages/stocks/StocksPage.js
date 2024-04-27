@@ -20,10 +20,12 @@ function StocksPage({ message, filter = "" }) {
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
 
+  const [query, setQuery] = useState("");
+
   useEffect(() => {
     const fetchStocks = async () => {
       try {
-        const { data } = await axiosReq.get(`/stocks/?${filter}`);
+        const { data } = await axiosReq.get(`/stocks/?${filter}search=${query}`);
         setStocks(data);
         setHasLoaded(true);
       } catch (err) {
@@ -32,13 +34,33 @@ function StocksPage({ message, filter = "" }) {
     };
 
     setHasLoaded(false);
-    fetchStocks();
-  }, [filter, pathname]);
+    const timer = setTimeout(() => {
+      fetchStocks();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [filter, query, pathname]);
 
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
         <p>Popular profiles mobile</p>
+        <i className={`fas fa-search ${styles.SearchIcon}`} />
+        <Form
+          className={styles.SearchBar}
+          onSubmit={(event) => event.preventDefault()}
+        >
+          <Form.Control
+            value={query}
+            onChange={(event) => setQuery(event.target.value)}
+            type="text"
+            className="mr-sm-2"
+            placeholder="Search:  stock, symbol, user, sector ...etc"
+          />
+        </Form>
+
         {hasLoaded ? (
           <>
             {stocks.results.length ? (
