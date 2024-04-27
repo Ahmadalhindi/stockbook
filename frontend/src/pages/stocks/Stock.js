@@ -2,9 +2,10 @@ import React from "react";
 import styles from "../../styles/Stock.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
+import { MoreDropdown } from "../../components/MoreDropdown";
 
 const Stock = (props) => {
   const {
@@ -34,6 +35,20 @@ const Stock = (props) => {
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
+  const history = useHistory();
+
+  const handleEdit = () => {
+    history.push(`/stocks/${id}/edit`);
+  };
+
+  const handleDelete = async () => {
+    try {
+      await axiosRes.delete(`/stocks/${id}/`);
+      history.goBack();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleBull = async () => {
     try {
@@ -110,7 +125,12 @@ const Stock = (props) => {
           {title && <Card.Title className="text-center">{title}</Card.Title>}
           <div className="d-flex align-items-center">
             <span>{updated_at}</span>
-            {is_owner && stockPage && "..."}
+            {is_owner && stockPage && (
+              <MoreDropdown
+                handleEdit={handleEdit}
+                handleDelete={handleDelete}
+              />
+            )}
           </div>
         </Media>
       </Card.Body>
@@ -127,7 +147,7 @@ const Stock = (props) => {
         {quantity && <Card.Text className="text-center">Quantity: {quantity}</Card.Text>}
       </Card.Body>
       <Card.Body>
-        {content && <Card.Text style={{ content, float: 'left' }}>Content:</Card.Text>}
+        {content && <Card.Text className="text-left">Content: {content}</Card.Text>}
       </Card.Body>
       <Card.Body>
         <div className={styles.PostBar}>
