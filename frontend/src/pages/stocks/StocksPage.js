@@ -14,6 +14,8 @@ import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import NoResults from "../../assets/no-results.png";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function StocksPage({ message, filter = "" }) {
   const [stocks, setStocks] = useState({ results: [] });
@@ -25,7 +27,9 @@ function StocksPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchStocks = async () => {
       try {
-        const { data } = await axiosReq.get(`/stocks/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(
+          `/stocks/?${filter}search=${query}`
+        );
         setStocks(data);
         setHasLoaded(true);
       } catch (err) {
@@ -64,9 +68,15 @@ function StocksPage({ message, filter = "" }) {
         {hasLoaded ? (
           <>
             {stocks.results.length ? (
-              stocks.results.map((stock) => (
-                <Stock key={stock.id} {...stock} setStocks={setStocks} />
-              ))
+              <InfiniteScroll
+                children={stocks.results.map((stock) => (
+                  <Stock key={stock.id} {...stock} setStocks={setStocks} />
+                ))}
+                dataLength={stocks.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!stocks.next}
+                next={() => fetchMoreData(stocks, setStocks)}
+              />
             ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
