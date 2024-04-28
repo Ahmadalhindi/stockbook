@@ -19,26 +19,37 @@ import {
   useSetProfileData,
 } from "../../contexts/ProfileDataContext";
 import { Button, Image } from "react-bootstrap";
+import InfiniteScroll from "react-infinite-scroll-component";
+import Stock from "../stocks/Stock";
+import { fetchMoreData } from "../../utils/utils";
+import NoResults from "../../assets/no-results.png";
 
 function ProfilePage() {
   const [hasLoaded, setHasLoaded] = useState(false);
+  const [profileStocks, setProfileStocks] = useState({ results: [] });
+
   const currentUser = useCurrentUser();
   const { id } = useParams();
+
   const setProfileData = useSetProfileData();
   const { pageProfile } = useProfileData();
+
   const [profile] = pageProfile.results;
   const is_owner = currentUser?.username === profile?.owner;
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const [{ data: pageProfile }] = await Promise.all([
-          axiosReq.get(`/profiles/${id}/`),
-        ]);
+        const [{ data: pageProfile }, { data: profileStocks }] =
+          await Promise.all([
+            axiosReq.get(`/profiles/${id}/`),
+            axiosReq.get(`/stocks/?owner__profile=${id}`),
+          ]);
         setProfileData((prevState) => ({
           ...prevState,
           pageProfile: { results: [pageProfile] },
         }));
+        setProfileStocks(profileStocks);
         setHasLoaded(true);
       } catch (err) {
         console.log(err);
@@ -101,8 +112,24 @@ function ProfilePage() {
   const mainProfileStocks = (
     <>
       <hr />
-      <p className="text-center">Profile owner's stocks</p>
+      <p className="text-center">{profile?.owner}'s stocks</p>
       <hr />
+      {profileStocks.results.length ? (
+        <InfiniteScroll
+          children={profileStocks.results.map((stock) => (
+            <Stock key={stock.id} {...stock} setStocks={setProfileStocks} />
+          ))}
+          dataLength={profileStocks.results.length}
+          loader={<Asset spinner />}
+          hasMore={!!profileStocks.next}
+          next={() => fetchMoreData(profileStocks, setProfileStocks)}
+        />
+      ) : (
+        <Asset
+          src={NoResults}
+          message={`No results found, ${profile?.owner} hasn't posted any stock yet.`}
+        />
+      )}
     </>
   );
 
