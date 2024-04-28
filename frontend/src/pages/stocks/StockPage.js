@@ -8,6 +8,7 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Stock from "./Stock";
+import Comment from "../comments/Comment";
 
 import CommentCreateForm from "../comments/CommentCreateForm";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -23,10 +24,12 @@ function StockPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: stock }] = await Promise.all([
+        const [{ data: stock }, { data: comments }] = await Promise.all([
           axiosReq.get(`/stocks/${id}`),
+          axiosReq.get(`/comments/?stock=${id}`),
         ]);
         setStock({ results: [stock] });
+        setComments(comments);
         console.log(stock);
       } catch (err) {
         console.log(err);
@@ -53,6 +56,15 @@ function StockPage() {
           ) : comments.results.length ? (
             "Comments"
           ) : null}
+          {comments.results.length ? (
+            comments.results.map((comment) => (
+              <Comment key={comment.id} {...comment} />
+            ))
+          ) : currentUser ? (
+            <span>No comments yet, be the first to comment!</span>
+          ) : (
+            <span>No comments... yet</span>
+          )}
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
