@@ -11,6 +11,9 @@ import StocksPage from "./pages/stocks/StocksPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import StockEditForm from "./pages/stocks/StockEditForm";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -68,6 +71,21 @@ function App() {
           <Route exact path="/stocks/:id" render={() => <StockPage />} />
           <Route exact path="/stocks/:id/edit" render={() => <StockEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
+          <Route
+            exact
+            path="/profiles/:id/edit/username"
+            render={() => <UsernameForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit/password"
+            render={() => <UserPasswordForm />}
+          />
+          <Route
+            exact
+            path="/profiles/:id/edit"
+            render={() => <ProfileEditForm />}
+          />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>
       </Container>
