@@ -28,7 +28,7 @@ function StockCreateForm() {
     company_name: "",
     symbol: "",
     sector: "",
-    order: "",
+    order: "hold",
     order_date: "",
     order_price: "",
     quantity: "",
@@ -67,7 +67,6 @@ function StockCreateForm() {
       });
     }
   };
-
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -146,7 +145,26 @@ function StockCreateForm() {
           name="sector"
           value={sector}
           onChange={handleChange}
-        />
+        >
+          <option value="">---------</option>
+          {[
+            "information technology",
+            "health",
+            "financials",
+            "consumer discretionary",
+            "communication services",
+            "industrials",
+            "consumer staples",
+            "energy",
+            "utilities",
+            "real estate",
+            "materials",
+          ].map((sectorOption) => (
+            <option key={sectorOption} value={sectorOption}>
+              {sectorOption}
+            </option>
+          ))}
+        </Form.Control>
       </Form.Group>
       {errors?.sector?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -160,7 +178,13 @@ function StockCreateForm() {
           name="order"
           value={order}
           onChange={handleChange}
-        />
+        >
+          {["buy", "sell", "hold"].map((orderOption) => (
+            <option key={orderOption} value={orderOption}>
+              {orderOption}
+            </option>
+          ))}
+        </Form.Control>
       </Form.Group>
       {errors?.order?.map((message, idx) => (
         <Alert variant="warning" key={idx}>

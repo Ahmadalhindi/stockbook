@@ -50,9 +50,34 @@ function StockEditForm() {
     const handleMount = async () => {
       try {
         const { data } = await axiosReq.get(`/stocks/${id}/`);
-        const { title, company_name, symbol, sector, order, order_date, order_price, quantity, content,  image, is_owner } = data;
+        const {
+          title,
+          company_name,
+          symbol,
+          sector,
+          order,
+          order_date,
+          order_price,
+          quantity,
+          content,
+          image,
+          is_owner,
+        } = data;
 
-        is_owner ? setStockData({ title, company_name, symbol, sector, order, order_date, order_price, quantity, content, image }) : history.push("/");
+        is_owner
+          ? setStockData({
+              title,
+              company_name,
+              symbol,
+              sector,
+              order,
+              order_date,
+              order_price,
+              quantity,
+              content,
+              image,
+            })
+          : history.push("/");
       } catch (err) {
         console.log(err);
       }
@@ -91,7 +116,6 @@ function StockEditForm() {
     formData.append("order_price", order_price);
     formData.append("quantity", quantity);
     formData.append("content", content);
-    formData.append("image", imageInput.current.files[0]);
 
     if (imageInput?.current?.files[0]) {
       formData.append("image", imageInput.current.files[0]);
@@ -159,7 +183,26 @@ function StockEditForm() {
           name="sector"
           value={sector}
           onChange={handleChange}
-        />
+        >
+          <option value="">---------</option>
+          {[
+            "information technology",
+            "health",
+            "financials",
+            "consumer discretionary",
+            "communication services",
+            "industrials",
+            "consumer staples",
+            "energy",
+            "utilities",
+            "real estate",
+            "materials",
+          ].map((sectorOption) => (
+            <option key={sectorOption} value={sectorOption}>
+              {sectorOption}
+            </option>
+          ))}
+        </Form.Control>
       </Form.Group>
       {errors?.sector?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
@@ -173,7 +216,13 @@ function StockEditForm() {
           name="order"
           value={order}
           onChange={handleChange}
-        />
+        >
+          {["buy", "sell", "hold"].map((orderOption) => (
+            <option key={orderOption} value={orderOption}>
+              {orderOption}
+            </option>
+          ))}
+        </Form.Control>
       </Form.Group>
       {errors?.order?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
