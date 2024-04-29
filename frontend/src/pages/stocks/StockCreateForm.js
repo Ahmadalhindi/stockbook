@@ -17,8 +17,10 @@ import Image from "react-bootstrap/Image";
 
 import { useHistory } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import { useRedirect } from "../../hooks/useRedirect";
 
 function StockCreateForm() {
+  useRedirect("loggedOut");
   const [errors, setErrors] = useState({});
 
   const [stockData, setStockData] = useState({
