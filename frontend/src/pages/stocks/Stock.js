@@ -52,6 +52,17 @@ const Stock = (props) => {
 
   const handleBull = async () => {
     try {
+      if (bear_id) {
+        await axiosRes.delete(`/bears/${bear_id}/`);
+        setStocks((prevStocks) => ({
+          ...prevStocks,
+          results: prevStocks.results.map((stock) => {
+            return stock.id === id
+              ? { ...stock, bears_count: stock.bears_count - 1, bear_id: null }
+              : stock;
+          }),
+        }));
+      }
       const { data } = await axiosRes.post("/bulls/", { stock: id });
       setStocks((prevStocks) => ({
         ...prevStocks,
@@ -84,6 +95,17 @@ const Stock = (props) => {
 
   const handleBear = async () => {
     try {
+      if (bull_id) {
+        await axiosRes.delete(`/bulls/${bull_id}/`);
+        setStocks((prevStocks) => ({
+          ...prevStocks,
+          results: prevStocks.results.map((stock) => {
+            return stock.id === id
+              ? { ...stock, bulls_count: stock.bulls_count - 1, bull_id: null }
+              : stock;
+          }),
+        }));
+      }
       const { data } = await axiosRes.post("/bears/", { stock: id });
       setStocks((prevStocks) => ({
         ...prevStocks,
