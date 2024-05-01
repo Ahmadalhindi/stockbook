@@ -11,14 +11,14 @@
     margin: 0 0;
   }
   
-  .Heart {
+  .Trend {
     color: #f85032;
   }
   
-  .Heart:hover {
+  .Trend:hover {
     color: #2142b2;
   }
   
-  .HeartOutline:hover {
+  .TrendOutline:hover {
     color: #f85032;
   }

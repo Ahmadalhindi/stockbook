@@ -34,7 +34,7 @@ const NavBar = () => {
       activeClassName={styles.Active}
       to="/stocks/create"
     >
-      <i className="far fa-plus-square"></i>Add stock
+      <i className="fa-solid fa-dollar-sign"></i>Add stock
     </NavLink>
   );
   const loggedInIcons = (

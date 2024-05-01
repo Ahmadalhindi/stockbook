@@ -178,22 +178,22 @@ const Stock = (props) => {
               placement="top"
               overlay={<Tooltip>You can't bull your own stock post!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="far fa-circle-up" />
             </OverlayTrigger>
           ) : bull_id ? (
             <span onClick={handleUnbull}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
+              <i className={`fas fa-circle-up ${styles.Trend}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleBull}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
+              <i className={`far fa-circle-up ${styles.TrendOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>Log in to bull stock posts!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="far fa-circle-up" />
             </OverlayTrigger>
           )}
           {bulls_count}
@@ -202,27 +202,27 @@ const Stock = (props) => {
               placement="top"
               overlay={<Tooltip>You can't bear your own stock post!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="far fa-circle-down" />
             </OverlayTrigger>
           ) : bear_id ? (
             <span onClick={handleUnbear}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
+              <i className={`fas fa-circle-down ${styles.Trend}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleBear}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
+              <i className={`far fa-circle-down ${styles.TrendOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>Log in to bear stock posts!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className="far fa-circle-down" />
             </OverlayTrigger>
           )}
           {bears_count}
           <Link to={`/stocks/${id}`}>
-            <i className="far fa-comments" />
+            <i className="fa-solid fa-comments-dollar" />
           </Link>
           {comments_count}
         </div>

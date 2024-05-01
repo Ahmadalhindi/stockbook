@@ -24,12 +24,13 @@ function StocksPage({ message, filter = "" }) {
   const { pathname } = useLocation();
 
   const [query, setQuery] = useState("");
+  const [sector, setSector] = useState("");
 
   useEffect(() => {
     const fetchStocks = async () => {
       try {
         const { data } = await axiosReq.get(
-          `/stocks/?${filter}search=${query}`
+          `/stocks/?${filter}search=${query}&sector=${sector}`
         );
         setStocks(data);
         setHasLoaded(true);
@@ -46,7 +47,7 @@ function StocksPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname]);
+  }, [filter, query, pathname, sector]);
 
   return (
     <Row className="h-100">
@@ -62,9 +63,34 @@ function StocksPage({ message, filter = "" }) {
             onChange={(event) => setQuery(event.target.value)}
             type="text"
             className="mr-sm-2"
-            placeholder="Search:  stock, symbol, user, sector ...etc"
+            aria-label="Search by stock"
+            placeholder="Search: stock symbol, company name, user, ...etc"
           />
         </Form>
+        <Form.Control
+          className="mr-sm-2"
+          as="select"
+          aria-label="Search by sector"
+          placeholder="Sector"
+          value={sector}
+          onChange={(event) => setSector(event.target.value)}
+        >
+          <option key="blankChoice" hidden value>
+            {" "}
+            Sector{" "}
+          </option>
+          <option>---------</option>
+          <option>information technology</option>
+          <option>health</option>
+          <option>financials</option>
+          <option>communication services</option>
+          <option>industrials</option>
+          <option>consumer staples</option>
+          <option>energy</option>
+          <option>utilities</option>
+          <option>real estate</option>
+          <option>materials</option>
+        </Form.Control>
 
         {hasLoaded ? (
           <>
