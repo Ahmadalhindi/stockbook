@@ -32,4 +32,5 @@ urlpatterns = [
     path('', include('bulls.urls')),
     path('', include('bears.urls')),
     path('', include('followers.urls')),
+    path('', include('earnings.urls')),
 ]

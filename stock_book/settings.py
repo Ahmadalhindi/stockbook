@@ -109,6 +109,7 @@ INSTALLED_APPS = [
     'bulls',
     'bears',
     'followers',
+    'earnings' ,
 ]
 SITE_ID = 1
 MIDDLEWARE = [

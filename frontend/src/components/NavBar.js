@@ -90,6 +90,8 @@ const NavBar = () => {
     </>
   );
 
+  console.log(currentUser, "<===current user")
+
   return (
     <Navbar
       expanded={expanded}
