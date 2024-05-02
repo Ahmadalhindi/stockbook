@@ -37,6 +37,17 @@ const NavBar = () => {
       <i className="fa-solid fa-dollar-sign"></i>Add stock
     </NavLink>
   );
+
+  const addEarningIcon = (
+    <NavLink
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/Earnings/create"
+    >
+      <i className="fa-solid fa-dollar-sign"></i>Add earning
+    </NavLink>
+  );
+
   const loggedInIcons = (
     <>
       <NavLink
@@ -99,13 +110,14 @@ const NavBar = () => {
       expand="md"
       fixed="top"
     >
-      <Container>
+      <Container fluid>
         <NavLink to="/">
           <Navbar.Brand>
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
         {currentUser && addStockIcon}
+        {currentUser && addEarningIcon}
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}

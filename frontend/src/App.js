@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import StockCreateForm from "./pages/stocks/StockCreateForm";
+import EarningCreateForm from "./pages/earnings/EarningCreateForm";
 import StockPage from "./pages/stocks/StockPage";
 import StocksPage from "./pages/stocks/StocksPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
@@ -70,6 +71,11 @@ function App() {
           />
           <Route exact path="/stocks/:id" render={() => <StockPage />} />
           <Route exact path="/stocks/:id/edit" render={() => <StockEditForm />} />
+          <Route
+            exact
+            path="/earnings/create"
+            render={() => <EarningCreateForm />}
+          />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route
             exact
