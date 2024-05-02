@@ -27,7 +27,9 @@ function EarningsPage({ message, filter = "" }) {
   useEffect(() => {
     const fetchEarnings = async () => {
       try {
-        const { data } = await axiosReq.get(`/earnings/?${filter}search=${query}`);
+        const { data } = await axiosReq.get(
+          `/earnings/?${filter}search=${query}`
+        );
         setEarnings(data);
         setHasLoaded(true);
       } catch (err) {
@@ -48,7 +50,7 @@ function EarningsPage({ message, filter = "" }) {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-      <p>Popular profiles mobile</p>
+        <p>Popular profiles mobile</p>
         <i className={`fas fa-search ${styles.SearchIcon}`} />
         <Form
           className={styles.SearchBar}
@@ -65,17 +67,21 @@ function EarningsPage({ message, filter = "" }) {
 
         {hasLoaded ? (
           <>
-          {earnings.results.length ? (
-            <InfiniteScroll
-              children={earnings.results.map((earning) => (
-                <Earning key={earning.id} {...earning} setEarnings={setEarnings} />
-              ))}
-              dataLength={earnings.results.length}
-              loader={<Asset spinner />}
-              hasMore={!!earnings.next}
-              next={() => fetchMoreData(earnings, setEarnings)}
-            />
-          ) : (
+            {earnings.results.length ? (
+              <InfiniteScroll
+                children={earnings.results.map((earning) => (
+                  <Earning
+                    key={earning.id}
+                    {...earning}
+                    setEarnings={setEarnings}
+                  />
+                ))}
+                dataLength={earnings.results.length}
+                loader={<Asset spinner />}
+                hasMore={!!earnings.next}
+                next={() => fetchMoreData(earnings, setEarnings)}
+              />
+            ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
               </Container>
