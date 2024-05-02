@@ -48,6 +48,16 @@ const NavBar = () => {
     </NavLink>
   );
 
+  const earningsPageIcon = (
+    <NavLink
+      className={styles.NavLink}
+      activeClassName={styles.Active}
+      to="/earnings"
+    >
+      <i className="fa-solid fa-dollar-sign"></i>Earnings
+    </NavLink>
+  );
+
   const loggedInIcons = (
     <>
       <NavLink
@@ -118,6 +128,7 @@ const NavBar = () => {
         </NavLink>
         {currentUser && addStockIcon}
         {currentUser && addEarningIcon}
+        {currentUser && earningsPageIcon}
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}

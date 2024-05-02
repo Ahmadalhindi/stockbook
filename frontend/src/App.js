@@ -16,6 +16,7 @@ import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import EarningCreateForm from "./pages/earnings/EarningCreateForm";
 import EarningPage from "./pages/earnings/EarningPage";
+import EarningsPage from "./pages/earnings/EarningsPage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -31,6 +32,13 @@ function App() {
             path="/"
             render={() => (
               <StocksPage message="No results found. Adjust the search keyword." />
+            )}
+          />
+          <Route
+            exact
+            path="/earnings"
+            render={() => (
+              <EarningsPage message="No results found. Adjust the search keyword." />
             )}
           />
           <Route
