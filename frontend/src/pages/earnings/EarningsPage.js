@@ -14,6 +14,8 @@ import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import NoResults from "../../assets/no-results.png";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { fetchMoreData } from "../../utils/utils";
 
 function EarningsPage({ message, filter = "" }) {
   const [earnings, setEarnings] = useState({ results: [] });
@@ -34,7 +36,13 @@ function EarningsPage({ message, filter = "" }) {
     };
 
     setHasLoaded(false);
-    fetchEarnings();
+    const timer = setTimeout(() => {
+      fetchEarnings();
+    }, 1000);
+
+    return () => {
+      clearTimeout(timer);
+    };
   }, [filter, query, pathname]);
 
   return (
@@ -57,11 +65,17 @@ function EarningsPage({ message, filter = "" }) {
 
         {hasLoaded ? (
           <>
-            {earnings.results.length ? (
-              earnings.results.map((earning) => (
+          {earnings.results.length ? (
+            <InfiniteScroll
+              children={earnings.results.map((earning) => (
                 <Earning key={earning.id} {...earning} setEarnings={setEarnings} />
-              ))
-            ) : (
+              ))}
+              dataLength={earnings.results.length}
+              loader={<Asset spinner />}
+              hasMore={!!earnings.next}
+              next={() => fetchMoreData(earnings, setEarnings)}
+            />
+          ) : (
               <Container className={appStyles.Content}>
                 <Asset src={NoResults} message={message} />
               </Container>
