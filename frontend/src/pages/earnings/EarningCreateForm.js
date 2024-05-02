@@ -8,8 +8,6 @@ import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 
 
-import styles from "../../styles/EarningCreateEditForm.module.css";
-import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
 import { useHistory } from "react-router";

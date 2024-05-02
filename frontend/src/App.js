@@ -6,7 +6,6 @@ import "./api/axiosDefaults";
 import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import StockCreateForm from "./pages/stocks/StockCreateForm";
-import EarningCreateForm from "./pages/earnings/EarningCreateForm";
 import StockPage from "./pages/stocks/StockPage";
 import StocksPage from "./pages/stocks/StocksPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
@@ -15,6 +14,8 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import EarningCreateForm from "./pages/earnings/EarningCreateForm";
+import EarningPage from "./pages/earnings/EarningPage";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -76,6 +77,7 @@ function App() {
             path="/earnings/create"
             render={() => <EarningCreateForm />}
           />
+          <Route exact path="/earnings/:id" render={() => <EarningPage />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route
             exact
