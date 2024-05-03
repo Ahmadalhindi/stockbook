@@ -48,16 +48,6 @@ const NavBar = () => {
     </NavLink>
   );
 
-  const earningsPageIcon = (
-    <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/earnings"
-    >
-      <i className="fa-solid fa-dollar-sign"></i>Earnings
-    </NavLink>
-  );
-
   const loggedInIcons = (
     <>
       <NavLink
@@ -126,16 +116,13 @@ const NavBar = () => {
             <img src={logo} alt="logo" height="45" />
           </Navbar.Brand>
         </NavLink>
-        {currentUser && addStockIcon}
-        {currentUser && addEarningIcon}
-        {currentUser && earningsPageIcon}
         <Navbar.Toggle
           ref={ref}
           onClick={() => setExpanded(!expanded)}
           aria-controls="basic-navbar-nav"
         />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ml-auto text-left">
+          <Nav className="mr-auto text-left">
             <NavLink
               exact
               className={styles.NavLink}
@@ -144,7 +131,21 @@ const NavBar = () => {
             >
               <i className="fas fa-home"></i>Home
             </NavLink>
-
+            <NavLink
+              className={styles.NavLink}
+              activeClassName={styles.Active}
+              to="/earnings"
+            >
+              <i className="fa-solid fa-dollar-sign"></i>Earnings
+            </NavLink>
+            {currentUser && (
+              <>
+                {addEarningIcon}
+                {addStockIcon}
+              </>
+            )}
+          </Nav>
+          <Nav className="ml-auto">
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>

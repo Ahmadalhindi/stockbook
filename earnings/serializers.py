@@ -16,5 +16,5 @@ class EarningSerializer(serializers.ModelSerializer):
         model = Earning
         fields = [
             'id', 'owner', 'is_owner', 'profile_id', 'profile_image',
-            'earning_date', 'ticker',
+            'created_at', 'earning_date', 'ticker',
         ]

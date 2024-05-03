@@ -11,7 +11,7 @@ class Earning(models.Model):
     earning_date = models.DateField()
 
     class Meta:
-        ordering = ['-earning_date']
+        ordering = ['-created_at']
 
     def __str__(self):
         return f'{self.id} {self.ticker}'

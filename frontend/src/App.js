@@ -17,6 +17,7 @@ import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import EarningCreateForm from "./pages/earnings/EarningCreateForm";
 import EarningPage from "./pages/earnings/EarningPage";
 import EarningsPage from "./pages/earnings/EarningsPage";
+import EarningEditForm from "./pages/earnings/EarningEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -86,6 +87,7 @@ function App() {
             render={() => <EarningCreateForm />}
           />
           <Route exact path="/earnings/:id" render={() => <EarningPage />} />
+          <Route exact path="/earnings/:id/edit" render={() => <EarningEditForm />} />
           <Route exact path="/profiles/:id" render={() => <ProfilePage />} />
           <Route
             exact

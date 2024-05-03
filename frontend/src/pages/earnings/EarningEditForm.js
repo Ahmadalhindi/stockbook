@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -7,13 +7,13 @@ import Col from "react-bootstrap/Col";
 import Alert from "react-bootstrap/Alert";
 import Container from "react-bootstrap/Container";
 
-import appStyles from "../../App.module.css";
+
 import btnStyles from "../../styles/Button.module.css";
 
-import { useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-function EarningCreateForm() {
+function EarningEditForm() {
   const [errors, setErrors] = useState({});
 
   const [earningData, setEarningData] = useState({
@@ -21,8 +21,32 @@ function EarningCreateForm() {
     earning_date: "",
   });
   const { ticker, earning_date } = earningData;
-
+  const { id } = useParams();
   const history = useHistory();
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const { data } = await axiosReq.get(`/earnings/${id}/`);
+        const {
+          ticker,
+          earning_date,
+          is_owner,
+        } = data;
+
+        is_owner
+          ? setEarningData({
+            ticker,
+            earning_date,
+            })
+          : history.push("/");
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [history, id]);
 
   const handleChange = (event) => {
     setEarningData({
@@ -39,15 +63,15 @@ function EarningCreateForm() {
     formData.append("earning_date", earning_date);
 
     try {
-      const { data } = await axiosReq.post("/earnings/", formData);
-      history.push(`/earnings/${data.id}`);
-    } catch (err) {
-      console.log(err);
-      if (err.response?.status !== 401) {
-        setErrors(err.response?.data);
+        await axiosReq.put(`/earnings/${id}/`, formData);
+        history.push(`/earnings/${id}`);
+      } catch (err) {
+        console.log(err);
+        if (err.response?.status !== 401) {
+          setErrors(err.response?.data);
+        }
       }
-    }
-  };
+    };
 
   const textFields = (
     <div className="text-center">
@@ -88,21 +112,21 @@ function EarningCreateForm() {
         cancel
       </Button>
       <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
-        create
+        save
       </Button>
     </div>
   );
-
+ 
   return (
     <Form onSubmit={handleSubmit}>
       <Row className="justify-content-center">
         {/* Form fields for small and larger screens */}
         <Col sm={10} md={7} lg={6}>
-          <Container className={appStyles.Content}>{textFields}</Container>
+          <Container className="py-2">{textFields}</Container>
         </Col>
       </Row>
     </Form>
   );
 }
 
-export default EarningCreateForm;
+export default EarningEditForm;

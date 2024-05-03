@@ -161,11 +161,11 @@ const Stock = (props) => {
       </Link>
       <Card.Body>
         {symbol && <Card.Title className="text-center">{symbol}</Card.Title>}
-        {company_name && <Card.Text className="text-center">Company Name: {company_name}</Card.Text>}
+        {company_name && <Card.Text className="text-center">Company name: {company_name}</Card.Text>}
         {sector && <Card.Text className="text-center">Sector: {sector}</Card.Text>}
         {order && <Card.Text className="text-center">Order: {order}</Card.Text>}
-        {order_date && <Card.Text className="text-center">COrder Date: {order_date}</Card.Text>}
-        {order_price && <Card.Text className="text-center">Order Price: {order_price}</Card.Text>}
+        {order_date && <Card.Text className="text-center">Order date: {order_date}</Card.Text>}
+        {order_price && <Card.Text className="text-center">Order price: {order_price}</Card.Text>}
         {quantity && <Card.Text className="text-center">Quantity: {quantity}</Card.Text>}
       </Card.Body>
       <Card.Body>
@@ -176,7 +176,7 @@ const Stock = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't bull your own stock post!</Tooltip>}
+              overlay={<Tooltip>You can't bull your own stocks!</Tooltip>}
             >
               <i className="far fa-circle-up" />
             </OverlayTrigger>
@@ -191,7 +191,7 @@ const Stock = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log in to bull stock posts!</Tooltip>}
+              overlay={<Tooltip>Log in to bull stocks!</Tooltip>}
             >
               <i className="far fa-circle-up" />
             </OverlayTrigger>
@@ -200,7 +200,7 @@ const Stock = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't bear your own stock post!</Tooltip>}
+              overlay={<Tooltip>You can't bear your own stocks!</Tooltip>}
             >
               <i className="far fa-circle-down" />
             </OverlayTrigger>
@@ -215,7 +215,7 @@ const Stock = (props) => {
           ) : (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>Log in to bear stock posts!</Tooltip>}
+              overlay={<Tooltip>Log in to bear stocks!</Tooltip>}
             >
               <i className="far fa-circle-down" />
             </OverlayTrigger>
