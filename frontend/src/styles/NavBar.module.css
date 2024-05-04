@@ -5,6 +5,11 @@
 
 .NavLink {
   padding: 5px;
+  color: rgb(40, 136, 174);
+}
+
+.NavLink:hover {
+  text-decoration: none;
 }
 
 a {

@@ -1,5 +1,5 @@
-import React from "react";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import React, { useState } from "react";
+import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
 import { NavLink } from "react-router-dom";
@@ -15,8 +15,9 @@ import { removeTokenTimestamp } from "../utils/utils";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+  const [expanded, setExpanded] = useState(false);
 
-  const { expanded, setExpanded, ref } = useClickOutsideToggle();
+  const { ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
@@ -28,24 +29,25 @@ const NavBar = () => {
     }
   };
 
-  const addStockIcon = (
-    <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/stocks/create"
-    >
-      <i className="fa-solid fa-dollar-sign"></i>Add stock
-    </NavLink>
-  );
+  const addStockAndEarningIcon = (
+    <Dropdown>
+      <Dropdown.Toggle
+        className={styles.NavLink}
+        variant="link"
+        id="dropdown-basic"
+      >
+        <i className="fa-solid fa-hand-holding-dollar"></i>Add
+      </Dropdown.Toggle>
 
-  const addEarningIcon = (
-    <NavLink
-      className={styles.NavLink}
-      activeClassName={styles.Active}
-      to="/Earnings/create"
-    >
-      <i className="fa-solid fa-dollar-sign"></i>Add earning
-    </NavLink>
+      <Dropdown.Menu>
+        <Dropdown.Item as={NavLink} to="/stocks/create">
+          Stock post
+        </Dropdown.Item>
+        <Dropdown.Item as={NavLink} to="/earnings/create">
+          Earning
+        </Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
   );
 
   const loggedInIcons = (
@@ -82,6 +84,7 @@ const NavBar = () => {
       </NavLink>
     </>
   );
+
   const loggedOutIcons = (
     <>
       <NavLink
@@ -100,8 +103,6 @@ const NavBar = () => {
       </NavLink>
     </>
   );
-
-  console.log(currentUser, "<===current user")
 
   return (
     <Navbar
@@ -138,12 +139,7 @@ const NavBar = () => {
             >
               <i className="fa-solid fa-dollar-sign"></i>Earnings
             </NavLink>
-            {currentUser && (
-              <>
-                {addEarningIcon}
-                {addStockIcon}
-              </>
-            )}
+            {currentUser && addStockAndEarningIcon}
           </Nav>
           <Nav className="ml-auto">
             {currentUser ? loggedInIcons : loggedOutIcons}
