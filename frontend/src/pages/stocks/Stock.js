@@ -37,6 +37,9 @@ const Stock = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  console.log('currentUser:', currentUser)
+  console.log(props)
+
   const handleEdit = () => {
     history.push(`/stocks/${id}/edit`);
   };

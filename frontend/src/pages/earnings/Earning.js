@@ -59,7 +59,7 @@ const Earning = (props) => {
       <Card.Body>
       {ticker && (
         <Card.Title className="text-center">
-          <Link to={`/earnings/${id}`}>Ticker symbol: {ticker}</Link>
+          <Link to={`/earnings/${id}`}>Ticker: {ticker}</Link>
         </Card.Title>
       )}
       {earning_date && <Card.Text>Earning date: {earning_date}</Card.Text>}

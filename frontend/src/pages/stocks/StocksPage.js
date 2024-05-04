@@ -4,6 +4,7 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
+import Select from "react-select";
 
 import Stock from "./Stock";
 import Asset from "../../components/Asset";
@@ -25,6 +26,26 @@ function StocksPage({ message, filter = "" }) {
 
   const [query, setQuery] = useState("");
   const [sector, setSector] = useState("");
+
+  const sectorOptions = [
+    { value: "information technology", label: "Information Technology" },
+    { value: "health", label: "Health" },
+    { value: "financials", label: "Financials" },
+    { value: "communication services", label: "Communication Services" },
+    { value: "industrials", label: "Industrials" },
+    { value: "consumer staples", label: "Consumer Staples" },
+    { value: "energy", label: "Energy" },
+    { value: "utilities", label: "Utilities" },
+    { value: "real estate", label: "Real Estate" },
+    { value: "materials", label: "Materials" },
+  ];
+  
+  const [selectedSector, setSelectedSector] = useState(null);
+  
+  const handleSectorChange = (selectedOption) => {
+    setSelectedSector(selectedOption);
+    setSector(selectedOption ? selectedOption.value : "");
+  };
 
   useEffect(() => {
     const fetchStocks = async () => {
@@ -67,31 +88,14 @@ function StocksPage({ message, filter = "" }) {
             aria-label="Search by stock"
             placeholder="Search: stock symbol, company name, user, ...etc"
           />
+          <Select
+            className={`${styles.SelectSector} Select`}
+            options={[{ value: "", label: "All Sectors" }, ...sectorOptions]}
+            value={selectedSector}
+            onChange={handleSectorChange}
+            placeholder="Select sector..."
+          />
         </Form>
-        <Form.Control
-          className="mr-sm-2"
-          as="select"
-          aria-label="Search by sector"
-          placeholder="Sector"
-          value={sector}
-          onChange={(event) => setSector(event.target.value)}
-        >
-          <option key="blankChoice" hidden value>
-            {" "}
-            Sector{" "}
-          </option>
-          <option>---------</option>
-          <option>information technology</option>
-          <option>health</option>
-          <option>financials</option>
-          <option>communication services</option>
-          <option>industrials</option>
-          <option>consumer staples</option>
-          <option>energy</option>
-          <option>utilities</option>
-          <option>real estate</option>
-          <option>materials</option>
-        </Form.Control>
 
         {hasLoaded ? (
           <>

@@ -52,7 +52,7 @@ function EarningCreateForm() {
   const textFields = (
     <div className="text-center">
       <Form.Group>
-        <Form.Label>Ticker symbol</Form.Label>
+        <Form.Label>Ticker</Form.Label>
         <Form.Control
           type="text"
           name="ticker"
