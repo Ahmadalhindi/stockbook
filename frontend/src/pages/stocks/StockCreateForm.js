@@ -87,7 +87,7 @@ function StockCreateForm() {
       const { data } = await axiosReq.post("/stocks/", formData);
       history.push(`/stocks/${data.id}`);
     } catch (err) {
-      console.log(err);
+      /* console.log(err); */
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

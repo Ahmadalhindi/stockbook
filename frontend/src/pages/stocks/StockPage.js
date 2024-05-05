@@ -34,9 +34,8 @@ function StockPage() {
         ]);
         setStock({ results: [stock] });
         setComments(comments);
-        console.log(stock);
       } catch (err) {
-        console.log(err);
+        /* console.log(err); */
       }
     };
 

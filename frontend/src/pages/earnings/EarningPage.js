@@ -18,9 +18,8 @@ function EarningPage() {
           axiosReq.get(`/earnings/${id}`),
         ]);
         setEarning({ results: [earning] });
-        console.log(earning);
       } catch (err) {
-        console.log(err);
+        /* console.log(err); */
       }
     };
 

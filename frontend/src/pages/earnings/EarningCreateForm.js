@@ -42,7 +42,7 @@ function EarningCreateForm() {
       const { data } = await axiosReq.post("/earnings/", formData);
       history.push(`/earnings/${data.id}`);
     } catch (err) {
-      console.log(err);
+      /* console.log(err); */
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

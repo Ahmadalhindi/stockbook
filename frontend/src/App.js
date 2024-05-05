@@ -18,6 +18,7 @@ import EarningCreateForm from "./pages/earnings/EarningCreateForm";
 import EarningPage from "./pages/earnings/EarningPage";
 import EarningsPage from "./pages/earnings/EarningsPage";
 import EarningEditForm from "./pages/earnings/EarningEditForm";
+import NotFound from "./components/NotFound";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -104,7 +105,7 @@ function App() {
             path="/profiles/:id/edit"
             render={() => <ProfileEditForm />}
           />
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <NotFound />} />
         </Switch>
       </Container>
     </div>

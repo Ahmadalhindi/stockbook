@@ -14,6 +14,7 @@ import styles from "../../styles/StocksPage.module.css";
 import { useLocation } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import NoResults from "../../assets/no-results.png";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
@@ -26,6 +27,8 @@ function StocksPage({ message, filter = "" }) {
 
   const [query, setQuery] = useState("");
   const [sector, setSector] = useState("");
+
+  const currentUser = useCurrentUser();
 
   const sectorOptions = [
     { value: "information technology", label: "Information Technology" },
@@ -56,7 +59,7 @@ function StocksPage({ message, filter = "" }) {
         setStocks(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        /* console.log(err); */
       }
     };
 
@@ -68,7 +71,7 @@ function StocksPage({ message, filter = "" }) {
     return () => {
       clearTimeout(timer);
     };
-  }, [filter, query, pathname, sector]);
+  }, [filter, query, pathname, sector, currentUser]);
 
   return (
     <Row className="h-100">

@@ -34,7 +34,7 @@ function EarningsPage({ message, filter = "" }) {
         setEarnings(data);
         setHasLoaded(true);
       } catch (err) {
-        console.log(err);
+        /* console.log(err); */
       }
     };
 

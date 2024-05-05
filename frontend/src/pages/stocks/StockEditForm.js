@@ -79,7 +79,7 @@ function StockEditForm() {
             })
           : history.push("/");
       } catch (err) {
-        console.log(err);
+        /* console.log(err); */
       }
     };
 
@@ -125,7 +125,7 @@ function StockEditForm() {
       await axiosReq.put(`/stocks/${id}/`, formData);
       history.push(`/stocks/${id}`);
     } catch (err) {
-      console.log(err);
+      /* console.log(err); */
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
       }

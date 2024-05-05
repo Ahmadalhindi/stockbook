@@ -1,7 +1,10 @@
 import React from "react";
 import styles from "../../styles/Stock.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import { Card, Media, OverlayTrigger, Tooltip } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import Media from "react-bootstrap/Media";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Tooltip from "react-bootstrap/Tooltip";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -37,9 +40,6 @@ const Stock = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
-  console.log('currentUser:', currentUser)
-  console.log(props)
-
   const handleEdit = () => {
     history.push(`/stocks/${id}/edit`);
   };
@@ -49,7 +49,7 @@ const Stock = (props) => {
       await axiosRes.delete(`/stocks/${id}/`);
       history.goBack();
     } catch (err) {
-      console.log(err);
+      /* console.log(err); */
     }
   };
 
@@ -76,7 +76,7 @@ const Stock = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      /* console.log(err); */
     }
   };
 
@@ -92,7 +92,7 @@ const Stock = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      /* console.log(err); */
     }
   };
 
@@ -119,7 +119,7 @@ const Stock = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      /* console.log(err); */
     }
   };
 
@@ -135,7 +135,7 @@ const Stock = (props) => {
         }),
       }));
     } catch (err) {
-      console.log(err);
+      /* console.log(err); */
     }
   };
 
