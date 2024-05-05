@@ -4,6 +4,10 @@ from stocks.models import Stock
 
 
 class Bear(models.Model):
+    """
+    Represents a 'bear' entity, which is associated with a user and a stock.
+    Bears typically indicate a pessimistic sentiment towards the stock market.
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     stock = models.ForeignKey(
         Stock, related_name='bears', on_delete=models.CASCADE

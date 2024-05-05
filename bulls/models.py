@@ -4,6 +4,10 @@ from stocks.models import Stock
 
 
 class Bull(models.Model):
+    """
+    Represents a 'bull' entity, which is associated with a user and a stock.
+    Model indicate a user's bullish sentiment towards a particular stock.
+    """
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     stock = models.ForeignKey(
         Stock, related_name='bulls', on_delete=models.CASCADE

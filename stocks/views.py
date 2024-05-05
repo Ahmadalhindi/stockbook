@@ -7,6 +7,20 @@ from .serializers import StockSerializer
 
 
 class StockList(generics.ListCreateAPIView):
+    """
+    API endpoint that allows viewing and creating stock instances.
+
+    Attributes:
+        serializer_class (StockSerializer): Serializer class
+        for the Stock model.
+        permission_classes (list): List of permission classes.
+        queryset (QuerySet): Queryset of Stock objects annotated
+        with counts of related objects.
+        filter_backends (list): List of filter backends.
+        search_fields (list): List of fields to search against.
+        filterset_fields (list): List of fields to filter against.
+        ordering_fields (list): List of fields to order against.
+    """
     serializer_class = StockSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     queryset = Stock.objects.annotate(
@@ -43,10 +57,17 @@ class StockList(generics.ListCreateAPIView):
     ]
 
     def perform_create(self, serializer):
+        """
+        Perform creation of a new stock instance.
+        """
         serializer.save(owner=self.request.user)
 
 
 class StockDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    API endpoint that allows viewing, updating and deleting
+    a single stock instance.
+    """
     serializer_class = StockSerializer
     permission_classes = [IsOwnerOrReadOnly]
     queryset = Stock.objects.annotate(

@@ -5,6 +5,9 @@ from bears.serializers import BearSerializer
 
 
 class BearList(generics.ListCreateAPIView):
+    """
+    List and create Bear objects.
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = BearSerializer
     queryset = Bear.objects.all()
@@ -14,6 +17,9 @@ class BearList(generics.ListCreateAPIView):
 
 
 class BearDetail(generics.RetrieveDestroyAPIView):
+    """
+    Retrieve and delete Bear objects.
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = BearSerializer
     queryset = Bear.objects.all()

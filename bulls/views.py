@@ -5,6 +5,9 @@ from bulls.serializers import BullSerializer
 
 
 class BullList(generics.ListCreateAPIView):
+    """
+    List and create Bull objects.
+    """
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     serializer_class = BullSerializer
     queryset = Bull.objects.all()
@@ -13,6 +16,9 @@ class BullList(generics.ListCreateAPIView):
         serializer.save(owner=self.request.user)
 
 class BullDetail(generics.RetrieveDestroyAPIView):
+    """
+    Retrieve and delete Bull objects.
+    """
     permission_classes = [IsOwnerOrReadOnly]
     serializer_class = BullSerializer
     queryset = Bull.objects.all()

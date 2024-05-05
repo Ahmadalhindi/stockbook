@@ -8,6 +8,10 @@ from .settings import (
 
 @api_view()
 def root_route(request):
+    """
+    View for the root route of the API.
+    Returns a welcome message.
+    """
     return Response({
         "message": "Welcome to stock book API!"
     })
@@ -16,6 +20,10 @@ def root_route(request):
 # dj-rest-auth logout view fix
 @api_view(['POST'])
 def logout_route(request):
+    """
+    View to handle user logout.
+    Clears JWT cookies upon logout.
+    """
     response = Response()
     response.set_cookie(
         key=JWT_AUTH_COOKIE,
