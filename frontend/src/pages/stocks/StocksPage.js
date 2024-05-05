@@ -86,7 +86,7 @@ function StocksPage({ message, filter = "" }) {
             type="text"
             className="mr-sm-2"
             aria-label="Search by stock"
-            placeholder="Search: stock symbol, company name, user, ...etc"
+            placeholder="Search by stock symbol, company name, tiltle, user, ...etc"
           />
           <Select
             className={`${styles.SelectSector} Select`}

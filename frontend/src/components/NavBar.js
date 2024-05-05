@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Container, Nav, Dropdown } from "react-bootstrap";
 import logo from "../assets/logo.png";
 import styles from "../styles/NavBar.module.css";
@@ -15,9 +15,7 @@ import { removeTokenTimestamp } from "../utils/utils";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-  const [expanded, setExpanded] = useState(false);
-
-  const { ref } = useClickOutsideToggle();
+  const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
     try {
@@ -129,6 +127,7 @@ const NavBar = () => {
               className={styles.NavLink}
               activeClassName={styles.Active}
               to="/"
+              onClick={() => setExpanded(false)}
             >
               <i className="fas fa-home"></i>Home
             </NavLink>
@@ -136,6 +135,7 @@ const NavBar = () => {
               className={styles.NavLink}
               activeClassName={styles.Active}
               to="/earnings"
+              onClick={() => setExpanded(false)}
             >
               <i className="fa-solid fa-dollar-sign"></i>Earnings
             </NavLink>

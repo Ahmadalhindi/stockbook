@@ -63,7 +63,7 @@ function EarningsPage({ message, filter = "" }) {
             onChange={(event) => setQuery(event.target.value)}
             type="text"
             className="mr-sm-2"
-            placeholder="Search:  ticker, user name"
+            placeholder="Search by ticker, user name"
           />
         </Form>
 
