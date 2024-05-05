@@ -45,7 +45,10 @@
     ]
   },
   "devDependencies": {
+    "@eslint/js": "^9.2.0",
     "@types/react-router-dom": "^5.3.3",
+    "eslint-plugin-react": "^7.34.1",
+    "globals": "^15.1.0",
     "msw": "^0.35.0"
   },
   "proxy": "http://127.0.0.1:8000/"

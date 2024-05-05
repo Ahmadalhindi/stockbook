@@ -18,6 +18,8 @@ import { removeTokenTimestamp } from "../utils/utils";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
+
+   // State and function for toggling dropdown visibility
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   const handleSignOut = async () => {
@@ -30,6 +32,7 @@ const NavBar = () => {
     }
   };
 
+  // Dropdown menu for adding stock and earning
   const addStockAndEarningIcon = (
     <Dropdown>
       <Dropdown.Toggle

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
+// Importing CSS modules for styling
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import signup from "../../assets/signup.png";
 
+// Importing Bootstrap components
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -14,9 +16,13 @@ import Row from "react-bootstrap/Row";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 
+// Importing Axios for HTTP requests
 import axios from "axios";
+
+// Importing custom hook for redirecting
 import { useRedirect } from "../../hooks/useRedirect";
 
+// Functional component for sign-up form
 const SignUpForm = () => {
   useRedirect("loggedIn");
   const [signUpData, setSignUpData] = useState({

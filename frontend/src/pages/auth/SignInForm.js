@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+// Importing necessary components from react-bootstrap
 import Form from "react-bootstrap/Form";
 import Alert from "react-bootstrap/Alert";
 import Button from "react-bootstrap/Button";
@@ -10,19 +11,22 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import signin from "../../assets/signin.png";
 
+// Importing necessary dependencies from react-router-dom and custom hooks
 import { Link, useHistory } from "react-router-dom";
-
-import styles from "../../styles/SignInUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { useRedirect } from "../../hooks/useRedirect";
 import { setTokenTimestamp } from "../../utils/utils";
+
+// Importing CSS modules
+import styles from "../../styles/SignInUpForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import appStyles from "../../App.module.css";
 
 function SignInForm() {
   const setCurrentUser = useSetCurrentUser();
   useRedirect("loggedIn");
 
+  // State variables for sign-in data and errors
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -33,7 +37,7 @@ function SignInForm() {
 
   const history = useHistory();
   const handleSubmit = async (event) => {
-    event.preventDefault();
+    event.preventDefault(); // Prevent default form submission behavior
 
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
@@ -45,6 +49,7 @@ function SignInForm() {
     }
   };
 
+  // Function to handle input field changes
   const handleChange = (event) => {
     setSignInData({
       ...signInData,

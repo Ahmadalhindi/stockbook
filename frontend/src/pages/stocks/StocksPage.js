@@ -30,6 +30,7 @@ function StocksPage({ message, filter = "" }) {
 
   const currentUser = useCurrentUser();
 
+  // Options for sector selection
   const sectorOptions = [
     { value: "information technology", label: "Information Technology" },
     { value: "health", label: "Health" },
@@ -44,7 +45,8 @@ function StocksPage({ message, filter = "" }) {
   ];
   
   const [selectedSector, setSelectedSector] = useState(null);
-  
+
+  // Function to handle sector change
   const handleSectorChange = (selectedOption) => {
     setSelectedSector(selectedOption);
     setSector(selectedOption ? selectedOption.value : "");
@@ -63,6 +65,7 @@ function StocksPage({ message, filter = "" }) {
       }
     };
 
+    // Setting a timer to prevent too frequent API calls
     setHasLoaded(false);
     const timer = setTimeout(() => {
       fetchStocks();
@@ -124,6 +127,7 @@ function StocksPage({ message, filter = "" }) {
           </Container>
         )}
       </Col>
+      {/* Right column - visible only on large screens */}
       <Col md={4} className="d-none d-lg-block p-0 p-lg-2">
         <p></p>
         <PopularProfiles />
