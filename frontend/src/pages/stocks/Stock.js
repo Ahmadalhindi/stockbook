@@ -1,10 +1,12 @@
 import React from "react";
-import styles from "../../styles/Stock.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+
 import Card from "react-bootstrap/Card";
 import Media from "react-bootstrap/Media";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import styles from "../../styles/Stock.module.css";
+
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Link, useHistory } from "react-router-dom";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
@@ -160,7 +162,7 @@ const Stock = (props) => {
         </Media>
       </Card.Body>
       <Link to={`/stocks/${id}`}>
-        <Card.Img src={image} alt={title} />
+        <Card.Img src={image} alt={title} className={`img-fluid ${styles.Image}`}  />
       </Link>
       <Card.Body>
         {symbol && <Card.Title className="text-center">{symbol}</Card.Title>}

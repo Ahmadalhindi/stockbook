@@ -2,14 +2,19 @@
     background-color: #ffffff;
     border: 1px solid #dadadf;
     border-radius: 2px;
-    margin-bottom: 16px;
     text-align: center;
+    margin-bottom: 15px;
   }
   
   .Post figure,
   h5 {
     margin: 0 0;
   }
+
+  .Image {
+    max-height: 300px;
+    width: auto;
+  } 
   
   .Trend {
     color: #f85032;
@@ -22,3 +27,4 @@
   .TrendOutline:hover {
     color: #f85032;
   }
+
