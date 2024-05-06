@@ -65,6 +65,7 @@ DEBUG = 'DEBUG' in os.environ
 
 ALLOWED_HOSTS = ['127.0.0.1', os.environ.get('ALLOWED_HOST')]
 
+
 CSRF_TRUSTED_ORIGINS = [
 "https://*.gitpod.io",
 "https://*.herokuapp.com",
