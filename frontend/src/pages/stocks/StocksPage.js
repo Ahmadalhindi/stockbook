@@ -99,6 +99,7 @@ function StocksPage({ message, filter = "" }) {
             options={[{ value: "", label: "All Sectors" }, ...sectorOptions]}
             value={selectedSector}
             onChange={handleSectorChange}
+            aria-label="Select sector"
             placeholder="Select sector..."
           />
         </Form>
