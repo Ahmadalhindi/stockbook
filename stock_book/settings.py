@@ -67,6 +67,7 @@ ALLOWED_HOSTS = [
 os.environ.get('ALLOWED_HOST'),
 'localhost',
 '127.0.0.1:8000',
+""" '8000-ahmadalhindi-stockbook-gm2ml0e2nil.ws-eu111.gitpod.io' """
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -92,10 +93,11 @@ INSTALLED_APPS = [
     'dj_rest_auth.registration',
     'corsheaders',
     'dj_rest_auth',
-    'django.contrib.sites', 
-    'allauth', 
-    'allauth.account', 
-    'allauth.socialaccount',    
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'django_extensions',
     'profiles',
     'stocks',
     'comments',
@@ -203,3 +205,8 @@ WHITENOISE_ROOT = BASE_DIR / 'staticfiles' / 'build'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+GRAPH_MODELS ={
+'all_applications': True,
+'graph_models': True,
+}
