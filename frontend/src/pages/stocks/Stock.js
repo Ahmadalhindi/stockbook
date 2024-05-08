@@ -42,6 +42,9 @@ const Stock = (props) => {
   const is_owner = currentUser?.username === owner;
   const history = useHistory();
 
+  console.log('currentUser:', currentUser)
+  console.log(props)
+
   const handleEdit = () => {
     history.push(`/stocks/${id}/edit`);
   };
@@ -51,7 +54,7 @@ const Stock = (props) => {
       await axiosRes.delete(`/stocks/${id}/`);
       history.goBack();
     } catch (err) {
-      /* console.log(err); */
+      console.log(err);
     }
   };
 

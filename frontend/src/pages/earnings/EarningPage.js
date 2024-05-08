@@ -19,7 +19,7 @@ function EarningPage() {
         ]);
         setEarning({ results: [earning] });
       } catch (err) {
-        /* console.log(err); */
+        console.log(err);
       }
     };
 
