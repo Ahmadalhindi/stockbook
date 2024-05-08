@@ -12,14 +12,15 @@ function EarningPage() {
   const [earning, setEarning] = useState({ results: [] });
 
   useEffect(() => {
+    
     const handleMount = async () => {
       try {
         const [{ data: earning }] = await Promise.all([
-          axiosReq.get(`/earnings/${id}`),
+          axiosReq.get(`/earnings/${id}/`),
         ]);
         setEarning({ results: [earning] });
       } catch (err) {
-        console.log(err);
+        /* console.log(err); */
       }
     };
 

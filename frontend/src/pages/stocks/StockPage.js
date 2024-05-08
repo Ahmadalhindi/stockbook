@@ -29,14 +29,13 @@ function StockPage() {
     const handleMount = async () => {
       try {
         const [{ data: stock }, { data: comments }] = await Promise.all([
-          axiosReq.get(`/stocks/${id}`),
+          axiosReq.get(`/stocks/${id}/`),
           axiosReq.get(`/comments/?stock=${id}`),
         ]);
         setStock({ results: [stock] });
         setComments(comments);
       } catch (err) {
-        console.log(stock);
-        console.log(err);
+        /* console.log(err); */
       }
     };
 
