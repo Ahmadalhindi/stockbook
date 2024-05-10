@@ -67,7 +67,8 @@ ALLOWED_HOSTS = [
 os.environ.get('ALLOWED_HOST'),
 'localhost',
 '127.0.0.1:8000',
-""" '8000-ahmadalhindi-stockbook-gm2ml0e2nil.ws-eu111.gitpod.io' """
+'8000-ahmadalhindi-stockbook-gm2ml0e2nil.ws-eu111.gitpod.io',
+'127.0.0.1',
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -75,6 +76,7 @@ CSRF_TRUSTED_ORIGINS = [
 "https://*.herokuapp.com",
 'http://localhost:8000',
 "http://127.0.0.1:8000",
+'http://127.0.0.1:8000/'
 ]
 
 # Application definition
