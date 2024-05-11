@@ -66,9 +66,9 @@ Visit [Stock Book GitHub Repository](https://github.com/Ahmadalhindi/lithium-bat
 
 - - -
 
-# User Experience
+## User Experience
 
-## Site Objectives
+### Site Objectives
 - Blog platform divided into two sections:
   - Stock post: share the stock news, transactions with ability to attach image or chart.
   - Earning event: share the earning date for a stock.
@@ -84,7 +84,7 @@ Visit [Stock Book GitHub Repository](https://github.com/Ahmadalhindi/lithium-bat
 
 *GICS: Global Industry Classification Standard
 
-## Target Audience
+### Target Audience
 - Users and investors that are interested in stock market.
 - New investors who seeking for guidance and tips in investing.
 - Investors that are sharing their experiences and transactions and news of stocks.
@@ -95,15 +95,15 @@ Visit [Stock Book GitHub Repository](https://github.com/Ahmadalhindi/lithium-bat
 \
 &nbsp;
 
-# Structure
+## Structure
 
-## Entity-Relationship Diagram ERD
+### Entity-Relationship Diagram ERD
 
 <p align="center">
 <img src="erd.png" alt="Entity-Relationship Diagram">
 </p>
 
-## API Models
+### API Models
 
 1.	Profile Model:
 - Purpose: Represents user profiles, providing information like name, biography, and profile image.
@@ -152,7 +152,7 @@ Visit [Stock Book GitHub Repository](https://github.com/Ahmadalhindi/lithium-bat
   - followed: ForeignKey relationship with the User model, representing the user being followed.
   - created_at: DateTimeField indicating when the relationship was created.
 
-## Agile Methodology  Milestones & User Stories
+### Agile Methodology  Milestones & User Stories
 
 The stock-book project was developed with 6 milestones and each contains their user stories that labeled according to its priority:
 
@@ -167,7 +167,7 @@ Link to the [stock-book project](https://github.com/users/Ahmadalhindi/projects/
 <img src="documentation/readme_images/amiresponsive.png" alt="stock-book project">
 </p>
 
-Milestone: Backend stock-book
+#### Milestone: Backend stock-book
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
 | :------: | :------: | :------: | ------ | :------: |
@@ -181,7 +181,7 @@ Milestone: Backend stock-book
 | [10](https://github.com/Ahmadalhindi/stockbook/issues/9) | Followers app | Admin | I want to be able to have full control of followers app on backend so I can allow users for the best use by adding their followers on frontend. | <span style="color:red">Must have</span> |
 | [11](https://github.com/Ahmadalhindi/stockbook/issues/9) | Search and filter equipments | Admin |  I want to be able to create search and filter equipments on backend so I can allow users find particular content more easily on frontend. | <span style="color:yellow">Should have</span> |
 
-Milestone: Frontend - Navigation
+#### Milestone: Frontend - Navigation
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
 | :------: | :------: | :------: | ------ | :------: |
@@ -189,7 +189,7 @@ Milestone: Frontend - Navigation
 | [13](https://github.com/Ahmadalhindi/stockbook/issues/9) | Fixed Navigation | user | I want to see nav bar in every page so I can navigate any page without go back to the home page. | <span style="color:yellow">Should have</span> |
 | [14](https://github.com/Ahmadalhindi/stockbook/issues/9) | Registration and Login Status | Registered User | I want to be able to be aware of my registration and login statu in the nav bar so I can make fast action for regiseration or log out for protection. | <span  style="color:red">Must have</span> |
 
-Milestone: Frontend - User Accessibility
+#### Milestone: Frontend - User Accessibility
 
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
@@ -198,7 +198,7 @@ Milestone: Frontend - User Accessibility
 | [16](https://github.com/Ahmadalhindi/stockbook/issues/9) | Sign in/out | Registered User | I want to be able to sign in to my account so I can get full advantages and the best use of the site. | <span style="color:red">Must have</span>  |
 | [17](https://github.com/Ahmadalhindi/stockbook/issues/9) | Refreshing Access Tokens | Registered User | I want to be able to maintain my logged-in status until I choose to log outcapability so I can have best use and my experience is not compromised. | <span style="color:red">Must have</span> |
 
-Milestone: Frontend - Stock Posts
+#### Milestone: Frontend - Stock Posts
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
 | :------: | :------: | :------: | ------ | :------: |
@@ -209,7 +209,7 @@ Milestone: Frontend - Stock Posts
 | [26](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/8) | Search Stocks by Keywords | User | I want to to be able to search for stock posts (symbol, order, user name ..) so I can Easily find the subject that I'm interested in. | <span style="color:yellow">Should have</span> |
 | [44](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/8) | Filter Stocks by Sector | Registered User | I want to be able to filter the stocks according to sector so I can easily view all stocks that belong to the sector that I like most. | <span style="color:green">Nice to have</span>
 
-Milestone: Frontend - Home Page
+#### Milestone: Frontend - Home Page
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
 | :------: | :------: | :------: | ------ | :------: |
@@ -217,7 +217,7 @@ Milestone: Frontend - Home Page
 | [24](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/7) | View All Stock Posts | User | I want to be able to view all stock posts so I can select the stock directly after entering the home page. | <span style="color:red">Must have</span> |
 | [25](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/8) | Keep Scrolling |  User | I want to be able to keep scrolling throught all stock posts so I can have unstoppable scrolling without any distraction. | <span style="color:green">Nice to have</span> |
 
-Milestone: Frontend - Communication
+#### Milestone: Frontend - Communication
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
 | :------: | :------: | :------: | ------ | :------: |
@@ -228,7 +228,7 @@ Milestone: Frontend - Communication
 | [31](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/7) | Click Bull for a Stock | Registered User | I want to be able to click bull button for a stock so I can represent my thought about stock price and push the stock order to buy related to a stock post. | <span style="color:red">Must have</span> |
 | [32](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/8) | Click Bear in Stock Posts | Registered User | I want to be able to click bear button for a stock so I can represent my thought about stock price and push the stock order to sell for a stock post. | <span style="color:red">Must have</span>
 
-Milestone: Frontend - User Profile Page
+#### Milestone: Frontend - User Profile Page
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
 | :------: | :------: | :------: | ------ | :------: |
@@ -239,14 +239,14 @@ Milestone: Frontend - User Profile Page
 | [39](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/8) | View User Profile Statistics | User | I want to be able to view the last user statistics (bio, number of posts, follows, users followed, bulls stocks and bears stocks) so I can know more about them and their stocks orders. | <span style="color:yellow">Should have</span> |
 | [40](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/8) | Most followed profiles | Registered User | I want to be able to view most followed profiles so I can know which profiles are popular. | <span style="color:green">Nice to have</span> |
 
-Milestone: Frontend - Bulls and Bears
+#### Milestone: Frontend - Bulls and Bears
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
 | :------: | :------: | :------: | ------ | :------: |
 | [34](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/7) | View Bulls in Stock | Registered User | I want to see stocks that I clicked for bull so I can decide which stock I need to buy. | <span style="color:green">Nice to have</span> |
 | [35](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/8) | View Bears in stocks | Registered User | I want to see stocks that I clicked for bear so I can decide which stock I need to sell. | <span style="color:green">Nice to have</span>
 
-Milestone: Frontend - Earning Events
+#### Milestone: Frontend - Earning Events
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
 | :------: | :------: | :------: | ------ | :------: |
@@ -255,7 +255,7 @@ Milestone: Frontend - Earning Events
 | [43](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/7) | View All Earning events | User | I want to be able to view all earning events so I can select to see the earning that I like. | <span style="color:red">Must have</span> |
 | [45](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog/issues/9) | Search Earning Event by keyword | User |  I want to be able to search earning events by ticker stock or user so I can easily find the earning that I'm interested without scrolling the page. | <span style="color:yellow">Should have</span> |
 
-User stories (Ignored status): for lack ot times
+### User stories (Ignored status): for lack ot times
 
 | <div align="center">#</div> | <div align="center">User Story</div> |  <div align="center">User/Registered user/Admin</div> | <div align="center">Content</div> | <div align="center">Label</div> |
 | :------: | :------: | :------: | ------ | :------: |
@@ -270,4 +270,8 @@ User stories (Ignored status): for lack ot times
 \
 &nbsp;
 
+## Testing
+
+### Manual Test
+Click on provided link to visit the [manual test](TEST.md) page.
 
