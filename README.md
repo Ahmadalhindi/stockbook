@@ -3,7 +3,7 @@
 
 
 <p align="center">
-<img src="static/template_images/logo.webp" alt="Stock Book logo">
+<img src="documentation/logo.png" alt="Stock Book logo">
 </p>
 
 \
@@ -12,17 +12,17 @@
 ## Introduction
 
 Welcome to my repository that represents Stock Book website.
-It is a stock blog website that allows users to add their stock transactions, news and earning events. Encourage users for more interaction to increase stock movement in the stockmarket.
+It is a stock blog website that allows users to add their stock blogs, news, order and earning events. Encourage users for more interaction to increase stock movement in the stockmarket.
 
  This repository contains the code for building a modern and responsive website using React for frontend and Django-rest for backend development.
 
 <p align="center">
-<img src="documentation/readme_images/amiresponsive.png" alt="amiresponsives">
+<img src="documentation/amiresponsive.png" alt="amiresponsives">
 </p>
 
-Visit [Stock Book website](https://lithium2023-734017e000a2.herokuapp.com/) website
+Visit [Stock Book website](https://stock-book-7c5f07440d68.herokuapp.com/) website
 
-Visit [Stock Book GitHub Repository](https://github.com/Ahmadalhindi/lithium-battery-recycle-blog)
+Visit [Stock Book GitHub Repository](https://github.com/Ahmadalhindi/stockbook)
 
 - - -
 
@@ -270,6 +270,47 @@ Link to the [stock-book project](https://github.com/users/Ahmadalhindi/projects/
 \
 &nbsp;
 
+
+# Skeleton
+## Wireframes
+- Home page/Stocks page:
+<p align="center">
+<img src="documentation/wireframes-homepage.png" alt="Entity-Relationship Diagram">
+</p>
+
+- Earnings page:
+<p align="center">
+<img src="documentation/wireframe-earningspage.png" alt="Entity-Relationship Diagram">
+</p>
+
+## Fonts
+- Montserrat, sans-serif: Montserrat Weight: 100 – 900
+
+Montserrat is a good font to use due to its modern design, readability, and wide availability.
+
+## Responsive Screens
+The website delivers a consistent and user-friendly experience across a wide range of devices, contributing to improved usability and accessibility.
+
+
+### Breakpoints
+- **Desktop**: 992px and above
+  - Navigation bar with visibility for logo and all items and buttons
+  - Grid layout adjusts to accommodate larger screen sizes.
+- **Tablet**: 768px - 991px
+  - Navigation bar: logo remains visible, but items and buttons may collapse to a hamburger drop down menu.
+  - Blogs will be listed vertically.
+- **Mobile**: Below 768px
+  - Navigation bar: the Logo and the hamburger icon will vertically align.
+  - Content stacks vertically for easier scrolling on smaller screens.
+
+- - -
+
+[Back to contents](<#contents>)
+
+\
+&nbsp;
+
+
 ## Testing
 
 Click on provided link to visit the [Test](TEST.md) page.
@@ -459,10 +500,8 @@ Those pages limited to the logged in users.
 <img src="documentation/search-earning.png" alt="nav_bar">
 </p>
 
-- In all stocks page, all users can select all sectors or a specific sector from 11 categorized GICS* sectors in dropped down menu.
+- In all stocks page, all users can select all sectors or a specific sector from 11 categorized GICS sectors in dropped down menu.
 
 <p align="center">
 <img src="documentation/select-menu.png" alt="nav_bar">
 </p>
-
-*GICS: Global Industry Classification Standard.
