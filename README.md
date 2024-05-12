@@ -272,6 +272,197 @@ Link to the [stock-book project](https://github.com/users/Ahmadalhindi/projects/
 
 ## Testing
 
-### Manual Test
-Click on provided link to visit the [manual test](TEST.md) page.
+Click on provided link to visit the [Test](TEST.md) page.
 
+\
+&nbsp;
+
+
+## Navigation Bar
+Intuitive, efficient, and located on top of all pages for helping users find the information they're looking for quickly and easily.
+
+- Logo: It is created as a brand image positioned at the left-hand side. Contains text that represents the name of the website and the letter "O" replaced by an icon to illustrate the communicate. Clicking on the logo directs users back to the homepage.
+
+<p align="center">
+<img src="documentation/logo.png" alt="logo">
+</p>
+
+- Logged out user:
+  - Homepage, Earning on the left
+  - Sign in, Sign up on the right
+
+<p align="center">
+<img src="documentation/nav-bar.png" alt="nav_bar">
+</p>
+
+
+- Logged in user:
+  - Homepage, Earning, Add menu on the left
+  - Feed, Bulled, Beared, Sign out, Profile on the right
+
+<p align="center">
+<img src="documentation/nav-bar-registered.png" alt="nav-bar-registered">
+</p>
+
+<p align="center">
+<img src="documentation/add-menu.png" alt="add-menu">
+</p>
+
+Responsive - small screen:
+
+<p align="center">
+<img src="documentation/burger-menu.png" alt="burger-menu">
+</p>
+
+## Sign up page:
+Form for registeration with proper valdiation warnings and link to sign in for already registered users.
+
+<p align="center">
+<img src="documentation/sign-up.png" alt="nav_bar">
+</p>
+
+## Sign in page:
+Form to sign in for registered users with proper valdiation warnings and link to sign up if the user not registered yet.
+
+<p align="center">
+<img src="documentation/sign-in.png" alt="nav_bar">
+</p>
+
+## Home page/all Blog page:
+
+Visit the page by clicking on the logo or Home item.
+
+The stocks sorted by the recent created stocks.
+
+<p align="center">
+<img src="documentation/homepage.png" alt="nav_bar">
+</p>
+
+## Most Followed Profiles:
+List Sorted by the most followed profiles and the ability to follow up or unfollow as buttons for registered users.
+
+The list showed in the above image in the home page section.
+
+
+## Stock page:
+Visit the stock by clicking on the image or the comment icon.
+
+- Profile details: username author and the profile image
+- chart or stock image
+- stock details: title, symbol, sector, content ...etc
+- bulled/beared:
+  - All users can view the sum number beside of the beared and bulled icons.
+  - Logged in users only can select between pessimistic (beared) or optimistic (bulled) sentiment towards a stock - can't select both. Also they can unselect by clicking again on the icon they select before.
+  - prevent the logged out users from selection with proper valdiation warning when clicked.
+  - prevent the selection for the authers of the same stock with proper valdiation warning when clicked.
+
+<p align="center">
+<img src="documentation/bulled-beared-comment.png" alt="nav_bar">
+</p>
+
+- Comments:
+   - All users can view the comments.
+   - Only logged in users can add/edit/delete their comments on a stock.
+
+<p align="center">
+<img src="documentation/comments.png" alt="nav_bar">
+</p>
+
+<p align="center">
+<img src="documentation/edit-comment.png" alt="nav_bar">
+</p>
+ 
+Only logged in users can create/edit/delete their own stocks by click on Add menu in the nav bar then select Stock post.
+
+Only logged in users can edit/delete their own stocks by click on three points in the stock and select edit/delete.
+
+<p align="center">
+<img src="documentation/three-points.png" alt="nav_bar">
+</p>
+
+ - On create/edit stock page can the logged in users preview their image before confirm create/edit
+
+ <p align="center">
+<img src="documentation/preview-image.png" alt="nav_bar">
+</p>
+
+<p align="center">
+<img src="documentation/create-stock.png" alt="nav_bar">
+</p>
+
+ - On create/edit stock page can throw proper valdiation warnings error for image size/height/width or when filling text.
+
+ ## All Earning events page:
+Visit the page by click on the Earning item in the nav bar.
+
+The earnings sorted by the nearest earning date.
+
+
+ ## Earning event page:
+ Visit the earning by clicking on the ticker on the earning.
+
+- Profile details: username author and the profile image.
+- Ticker: the ticker symbol of the stock.
+- Earning date: the earning date that declared for the stock.
+
+<p align="center">
+<img src="documentation/earning.png" alt="nav_bar">
+</p>
+
+Only logged in users can create/edit/delete their own stocks by click on Add menu in the nav bar then select Stock post.
+
+On create/edit stock page can throw proper valdiation warnings error for submit the content.
+
+<p align="center">
+<img src="documentation/create-earning.png" alt="nav_bar">
+</p>
+
+## Profile Page:
+All users can view profile users by click on the profile image or username in the stock or in the earning or from list of most followed profiles.
+
+Profile auto-created when the user sign up with default profile image.
+
+- Username
+- Profile image
+- Profile statistics:
+  - Sum numbers of the stocks.
+  - Sum number of the followers.
+  - sum number of the following.
+- Stocks posted by users.
+
+<p align="center">
+<img src="documentation/profile.png" alt="nav_bar">
+</p>
+
+The registered user can visit the edit/change username/change password pages from the three points menu on the owner profile page as image above.
+
+The edit pages are following the validation rules with throwing proper warning errors.
+
+## Feed, Bulled and Beared pages:
+
+Those pages limited to the logged in users.
+
+- Feed page: Represents the stocks of the users that are being followed.
+- Bulled page: Represents the bulled stocks.
+- Beared page: Represents the beared stocks.
+
+## Search And select menu:
+- In all stocks page, all users can search by keyword as it displayed under.
+
+<p align="center">
+<img src="documentation/search-stock.png" alt="nav_bar">
+</p>
+
+- In all earnings page, all users can search by keyword as it displayed under.
+
+<p align="center">
+<img src="documentation/search-earning.png" alt="nav_bar">
+</p>
+
+- In all stocks page, all users can select all sectors or a specific sector from 11 categorized GICS* sectors in dropped down menu.
+
+<p align="center">
+<img src="documentation/select-menu.png" alt="nav_bar">
+</p>
+
+*GICS: Global Industry Classification Standard.
