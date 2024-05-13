@@ -49,6 +49,10 @@ Back to[ README](README.md)
 | All pages | Logged in users | Visit Beared page | Click on 'Beared' on the right | Pass |
 | All pages | Logged in users | View the Beared stocks | Click on Beared icon to the certain stock then visit the 'Beared' page and you will see this beared stock | Pass |
 | All pages | Logged in users | Visit Profile page | Click on 'Profile' on the right | Pass |
+| All pages | All users | Auto-close the toggle menu when click out side | Click outside the toggle menu in the small screen and the menu will close | Pass
+| All pages | All users | Auto-close the toggle menu when click on links except for the add menu | Click on the links in the toggle menu and the links inside the add menu in the small screen and the menu will close except for the add dropdown menu | Pass |
+| All pages | All users | the add dropdown menu in the toggle menu in small screen | Open the add menu in the toggle menu and the add will dropdown a menu | Pass |
+
 
 ### Most Followed Profiles List:
 
