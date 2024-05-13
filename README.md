@@ -1,13 +1,14 @@
 
 
-#  <div align="center">Stock Book </div>
+#  <div align="center">StockBook </div>
 
 \
 &nbsp;
 
 ## Introduction
 
-Welcome to my repository that represents Stock Book website.
+Welcome to my repository that represents StockBook website.
+
 It is a stock blog website that allows users to add their stock blogs, news, order and earning events. Encourage users for more interaction to increase stock movement in the stock market.
 
  This repository contains the code for building a modern and responsive website using React for frontend and Django-rest for backend development.
@@ -16,9 +17,9 @@ It is a stock blog website that allows users to add their stock blogs, news, ord
 <img src="documentation/amiresponsive.png" alt="amiresponsives">
 </p>
 
-Visit [Stock Book website](https://stock-book-7c5f07440d68.herokuapp.com/) website
+Visit [StockBook website](https://stock-book-7c5f07440d68.herokuapp.com/) website
 
-Visit [Stock Book GitHub Repository](https://github.com/Ahmadalhindi/stockbook)
+Visit [StockBook GitHub Repository](https://github.com/Ahmadalhindi/stockbook)
 
 - - -
 
@@ -35,6 +36,7 @@ Visit [Stock Book GitHub Repository](https://github.com/Ahmadalhindi/stockbook)
   - [Entity-Relationship Diagram ERD](#entity-relationship-diagram-erd)
   - [API Models](#api-models)
   - [Agile Methodology](#agile-methodology)
+  - [React Reusable Components](#react-reusable-components)
 - [Skeleton](#skeleton)
   - [Wireframes](#wireframes)
   - [Fonts](#fonts)
@@ -258,27 +260,27 @@ Link to the [stock-book project](https://github.com/users/Ahmadalhindi/projects/
 
 ### React Reusable Components
 
-### Asset component: Asset.js
+#### Asset component: Asset.js
 
 This component is rendering a spinning animation, to indicate that something is loading or processing in the background. It will provide feedback to users that an action is being performed and to prevent them from feeling like the application is unresponsive.
 
 Used in stock, earning, comment, profile pages and popular profiles including search and select sector menu.
 
-### Avatar component: Avatar.js
+#### Avatar component: Avatar.js
 
 This component is used in stock, earning, comment, profile, nav bar and in creating comment to render an image profile.
 
-### Three Dots Dropdown Menu: MoreDropdown.js
+#### Three Dots Dropdown Menu: MoreDropdown.js
 
 This component imported in stock, earning and comment to help users for select edit or delete as dropdown menu when clicking on the three dots.
 
 Also give function in profile page as ProfileEditDropdown to select edit profile, change username, or change password as dropdown menu when clicking on the three dots.
 
-### Navbar component: NavBar.js
+#### Navbar component: NavBar.js
 
 This component is used to render the navbar across the respective pages of the app.
 
-### Not Found Component: NotFound.js
+#### Not Found Component: NotFound.js
 This component will work when a page is not found, 404 alert.
 
 
